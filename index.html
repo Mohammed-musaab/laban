@@ -132,12 +132,27 @@
     /* Hero Section */
     .hero-section {
       background-color: #f8fbfe;
-      background-image: linear-gradient(rgba(248, 251, 254, 0.9), rgba(248, 251, 254, 0.94)), url('the.png');
-      background-position: center;
-      background-size: cover;
       position: relative;
+      overflow: hidden;
       padding-top: 60px;
       padding-bottom: 120px;
+    }
+
+    .hero-section > .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-background-jug {
+      position: absolute;
+      z-index: 0;
+      top: 14%;
+      right: 5%;
+      width: min(42vw, 460px);
+      height: auto;
+      opacity: 0.18;
+      border-radius: 24px;
+      pointer-events: none;
     }
 
     .hero-title {
@@ -335,8 +350,8 @@
     <div class="container">
       <nav class="navbar navbar-expand-lg p-0">
         <a class="navbar-brand" href="#">
-          <div style="width: 44px; height: 44px; background: #77d9eb; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--color1); font-size: 24px;">
-            
+          <div style="width: 44px; height: 44px; background: #ffffff; border-radius: 50%; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+            <img src="The (2).png" alt="The Laban" style="width: 39px; height: auto; display: block;">
           </div>
           <span>The Laban <span style="font-family: var(--font2); font-weight: 300; font-size: 18px; opacity: 0.9;">د. لبن</span></span>
         </a>
@@ -366,6 +381,7 @@
   <main>
     <!-- 3. HERO BANNER -->
     <section id="overview" class="hero-section">
+      <img class="hero-background-jug bottle-levitate" src="laban.png" alt="" aria-hidden="true">
       <div class="container">
         <div class="row align-items-center">
           <div class="col-lg-7 text-center text-lg-start" data-aos="fade-up">
@@ -407,7 +423,7 @@
               <div style="position: absolute; inset: -15px; background: var(--color1_25); border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; z-index: 0; filter: blur(20px);"></div>
               <div style="position: relative; z-index: 1; width: 330px; height: 330px; border-radius: 50%; background: linear-gradient(135deg, var(--color1), var(--color1_150)); display: flex; align-items: center; justify-content: center; color: white; box-shadow: 0 20px 45px rgba(0, 116, 217, 0.35); margin: 0 auto;">
                 <div class="text-center p-4">
-                  <img class="hero-dessert-image bottle-levitate" src="the.png" alt="The Laban illuminated dessert house branding">
+                  <img class="hero-dessert-image" src="laban.png" alt="The Laban milk dessert">
                   <div class="brand-font fs-3 mt-2">THE.LABAN</div>
                   <div class="text-light small">Royal Dessert House</div>
                 </div>
