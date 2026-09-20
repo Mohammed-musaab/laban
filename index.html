@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Laban - بـ لبن | Kalaburagi</title>
+
+  <!-- Google Fonts: ADLaM Display & Roboto (Exact B.Laban Typeface) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=ADLaM+Display&family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5.3 & FontAwesome Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css" rel="stylesheet">
+  <!-- AOS (Animate on Scroll) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+
+  <style>
+    :root {
+      --color1: #0074d9;
+      --color2: #0057a3;
+      --color1_rgb: 0, 116, 217;
+      --color1_25: #bfdcf6;
+      --color1_50: #80baec;
+      --color1_75: #4097e3;
+      --color1_125: #0057a3;
+      --color1_150: #003a6d;
+      --color1_175: #001d36;
+      --ui-color-accent: #179BD7;
+      --font1: 'ADLaM Display', cursive, sans-serif;
+      --font2: 'Roboto', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font2);
+      color: #333333;
+      background-color: #ffffff;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, .brand-font, .btn-blaban {
+      font-family: var(--font1);
+    }
+
+    /* B.Laban Loading Spinner */
+    #websiteLoading {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: #ffffff;
+      z-index: 99999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.5s ease;
+    }
+
+    .blaban-spinner {
+      width: 80px;
+      height: 80px;
+      border: 5px solid var(--color1_25);
+      border-top-color: var(--color1);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Header & Navigation */
+    #headerMenu {
+      background: var(--color1);
+      padding: 14px 0;
+      border-top: 6px solid var(--color1_150);
+      box-shadow: 0 4px 20px rgba(0, 116, 217, 0.15);
+    }
+
+    .navbar-brand {
+      font-family: var(--font1);
+      font-size: 26px;
+      color: #ffffff !important;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .nav-link {
+      font-family: var(--font1);
+      color: #ffffff !important;
+      font-size: 15px;
+      text-transform: uppercase;
+      padding: 8px 16px !important;
+      transition: 0.2s all;
+    }
+
+    .nav-link:hover {
+      color: var(--color1_25) !important;
+    }
+
+    .btn-nav-order {
+      background: #ffffff;
+      color: var(--color1) !important;
+      font-family: var(--font1);
+      font-size: 14px;
+      padding: 10px 22px;
+      border-radius: 50px;
+      font-weight: 700;
+      transition: 0.2s transform;
+      text-decoration: none;
+      display: inline-block;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .btn-nav-order:hover {
+      transform: translateY(-2px);
+      background: var(--color1_25);
+      color: var(--color1_150) !important;
+    }
+
+    /* Hero Section */
+    .hero-section {
+      background-color: #f8fbfe;
+      position: relative;
+      padding-top: 60px;
+      padding-bottom: 120px;
+    }
+
+    .hero-title {
+      font-size: clamp(2.3rem, 5vw, 3.8rem);
+      color: var(--color1_150);
+      line-height: 1.15;
+    }
+
+    .hero-subtitle {
+      font-size: 18px;
+      color: #556987;
+      margin-top: 20px;
+      margin-bottom: 35px;
+    }
+
+    .btn-blaban-primary {
+      background-color: var(--color1);
+      color: #ffffff;
+      font-size: 17px;
+      padding: 14px 34px;
+      border-radius: 50px;
+      border: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      box-shadow: 0 10px 25px rgba(0, 116, 217, 0.3);
+      transition: 0.25s all;
+    }
+
+    .btn-blaban-primary:hover {
+      background-color: var(--color1_125);
+      color: #ffffff;
+      transform: translateY(-2px);
+    }
+
+    .rating-badge {
+      background: #ffffff;
+      border: 2px solid var(--color1_25);
+      padding: 10px 20px;
+      border-radius: 50px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: bold;
+      color: var(--color1_150);
+      box-shadow: 0 4px 15px rgba(0, 116, 217, 0.08);
+    }
+
+    /* SVG Layer Dividers */
+    .svg-layer {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+      z-index: 2;
+    }
+
+    .svg-layer-bottom {
+      bottom: -1px;
+    }
+
+    .svg-layer-top {
+      top: -1px;
+      transform: scaleY(-1);
+    }
+
+    /* Tilted Dessert Showcase Row (Signature B.Laban style) */
+    .tilted-showcase-section {
+      background-color: var(--color1_25);
+      padding: 100px 0;
+      position: relative;
+    }
+
+    .tilted-card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 18px;
+      box-shadow: 0 15px 35px rgba(0, 58, 109, 0.15);
+      text-align: center;
+      transition: 0.3s transform ease, 0.3s box-shadow ease;
+      cursor: pointer;
+    }
+
+    .tilted-card:hover {
+      transform: scale(1.08) rotate(0deg) !important;
+      z-index: 10;
+      box-shadow: 0 25px 50px rgba(0, 58, 109, 0.25);
+    }
+
+    .tilted-card-img {
+      width: 100%;
+      height: 190px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 55px;
+      margin-bottom: 15px;
+    }
+
+    /* Values & Stats Section */
+    .stats-section {
+      background: var(--color1);
+      color: #ffffff;
+      padding: 110px 0 130px;
+      position: relative;
+    }
+
+    .stat-number {
+      font-family: var(--font1);
+      font-size: 50px;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    /* Reviews Section */
+    .reviews-section {
+      background: #ffffff;
+      padding: 100px 0;
+    }
+
+    .review-bubble {
+      background: #fdfdfd;
+      border: 1px solid #e7edf3;
+      border-radius: 22px;
+      padding: 26px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.04);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* Footer */
+    .blaban-footer {
+      background: var(--color1_150);
+      color: #ffffff;
+      padding: 80px 0 30px;
+      position: relative;
+    }
+
+    .footer-link {
+      color: var(--color1_25);
+      text-decoration: none;
+      transition: 0.2s color;
+    }
+
+    .footer-link:hover {
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 1. B.LABAN LOADING SPINNER OVERLAY -->
+  <div id="websiteLoading">
+    <div class="text-center">
+      <div class="blaban-spinner mb-3 mx-auto"></div>
+      <div class="brand-font fs-4 text-primary">The Laban • د. لبن</div>
+    </div>
+  </div>
+
+  <!-- 2. HEADER & NAVIGATION BAR -->
+  <header id="headerMenu" class="sticky-top">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg p-0">
+        <a class="navbar-brand" href="#">
+          <div style="width: 44px; height: 44px; background: #ffffff; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--color1); font-size: 24px;">
+            🥛
+          </div>
+          <span>The Laban <span style="font-family: var(--font2); font-weight: 300; font-size: 18px; opacity: 0.9;">د. لبن</span></span>
+        </a>
+
+        <button class="navbar-toggler border-0 text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navContent">
+          <i class="fas fa-bars fa-lg"></i>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navContent">
+          <ul class="navbar-nav ms-auto align-items-lg-center">
+            <li class="nav-item"><a class="nav-link" href="#overview">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="#menu">Menu</a></li>
+            <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="#reviews">Reviews</a></li>
+            <li class="nav-item"><a class="nav-link" href="#location">Directions</a></li>
+            <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+              <a class="btn-nav-order" href="https://maps.google.com/?q=8VQ2+45Q,+Main+Rd,+Basaveshwar+Colony,+Kalaburagi,+Karnataka+585105" target="_blank">
+                <i class="fas fa-location-dot me-1"></i> Visit Shop
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- 3. HERO BANNER -->
+    <section id="overview" class="hero-section">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-7 text-center text-lg-start" data-aos="fade-up">
+            
+            <div class="rating-badge mb-4">
+              <span class="text-warning">★★★★★</span>
+              <span>4.8</span>
+              <span class="text-muted fw-normal">(23 Google Reviews)</span>
+              <span class="badge bg-success ms-2">Open Closes 12 AM</span>
+            </div>
+
+            <h1 class="hero-title">
+              Discover a world of creamy dairy & luscious confections.
+            </h1>
+
+            <p class="hero-subtitle">
+              Welcome to <strong>The Laban (د. لبن)</strong> in Basaveshwar Colony, Kalaburagi. From signature rich cream puddings to molten cheese surprises, indulge in desserts made with love and fresh ingredients.
+            </p>
+
+            <div class="d-flex flex-wrap gap-3 justify-content-center justify-content-lg-start">
+              <a href="#menu" class="btn-blaban-primary">
+                <span>Explore Desserts</span>
+                <i class="fas fa-arrow-right"></i>
+              </a>
+              <a href="https://maps.google.com/?q=8VQ2+45Q,+Main+Rd,+Basaveshwar+Colony,+Kalaburagi,+Karnataka+585105" target="_blank" class="btn btn-outline-primary btn-lg rounded-pill px-4" style="font-family: var(--font1); font-size: 16px;">
+                <i class="fas fa-map-marker-alt me-2"></i> 8VQ2+45Q Kalaburagi
+              </a>
+            </div>
+
+            <div class="mt-4 text-muted small d-flex align-items-center justify-content-center justify-content-lg-start gap-4">
+              <span><i class="fas fa-check-circle text-primary me-1"></i> Takeaway</span>
+              <span><i class="fas fa-check-circle text-primary me-1"></i> Dine-in</span>
+              <span><i class="fas fa-check-circle text-primary me-1"></i> Late Night Cravings</span>
+            </div>
+          </div>
+
+          <div class="col-lg-5 mt-5 mt-lg-0 text-center" data-aos="fade-left">
+            <div style="position: relative; display: inline-block;">
+              <div style="position: absolute; inset: -15px; background: var(--color1_25); border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; z-index: 0; filter: blur(20px);"></div>
+              <div style="position: relative; z-index: 1; width: 330px; height: 330px; border-radius: 50%; background: linear-gradient(135deg, var(--color1), var(--color1_150)); display: flex; align-items: center; justify-content: center; color: white; box-shadow: 0 20px 45px rgba(0, 116, 217, 0.35); margin: 0 auto;">
+                <div class="text-center p-4">
+                  <div style="font-size: 75px;">🍨</div>
+                  <div class="brand-font fs-3 mt-2">B.LABAN</div>
+                  <div class="text-light small">Royal Dessert House</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- B.Laban Curve SVG Divider -->
+      <div class="svg-layer svg-layer-bottom">
+        <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="width: 100%; height: 60px;">
+          <path d="M0,32L80,42.7C160,53,320,75,480,69.3C640,64,800,32,960,21.3C1120,11,1280,21,1360,26.7L1440,32L1440,80L1360,80C1280,80,1120,80,960,80C800,80,640,80,480,80C320,80,160,80,80,80L0,80Z" fill="#bfdcf6"></path>
+        </svg>
+      </div>
+    </section>
+
+    <!-- 4. SIGNATURE DESSERT SHOWCASE (The Tilted B.Laban Cards) -->
+    <section id="menu" class="tilted-showcase-section">
+      <div class="container">
+        <div class="text-center mb-5" data-aos="fade-up">
+          <div class="badge bg-primary text-white px-3 py-2 rounded-pill brand-font text-uppercase mb-2">Our House Menu</div>
+          <h2 class="brand-font display-5 text-dark">Most Loved Specialties</h2>
+          <p class="text-muted">The exact viral desserts celebrated in customer reviews</p>
+        </div>
+
+        <!-- Alternating Tilted Row replicating the B.Laban design -->
+        <div class="row g-4 justify-content-center">
+          
+          <!-- Dish 1: Ruh Hayati -->
+          <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="100">
+            <div class="tilted-card" style="transform: translateY(-1.5rem) scale(1.05) rotate(-3deg);">
+              <div class="tilted-card-img" style="background: #eef7ff; color: #0074d9;">
+                🍮
+              </div>
+              <h4 class="fs-5 text-dark mb-1">Ruh Hayati</h4>
+              <p class="small text-muted mb-2">Velvety cream pudding, aromatic notes & pistachio crumble</p>
+              <span class="badge bg-primary-subtle text-primary fw-bold">Customer Favorite</span>
+            </div>
+          </div>
+
+          <!-- Dish 2: Cheese Bomb -->
+          <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="200">
+            <div class="tilted-card" style="transform: translateY(1.2rem) scale(1.05) rotate(4deg);">
+              <div class="tilted-card-img" style="background: #fff8e7; color: #d97706;">
+                🧀
+              </div>
+              <h4 class="fs-5 text-dark mb-1">Cheese Bomb</h4>
+              <p class="small text-muted mb-2">Crisp warm crust bursting with molten sweet cream cheese</p>
+              <span class="badge bg-warning-subtle text-warning-emphasis fw-bold">Top Seller</span>
+            </div>
+          </div>
+
+          <!-- Dish 3: Salankatia -->
+          <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="300">
+            <div class="tilted-card" style="transform: translateY(-1.8rem) scale(1.05) rotate(-4deg);">
+              <div class="tilted-card-img" style="background: #f0fdf4; color: #16a34a;">
+                ✨
+              </div>
+              <h4 class="fs-5 text-dark mb-1">Salankatia</h4>
+              <p class="small text-muted mb-2">Traditional palace recipe, caramelized laban reduction</p>
+              <span class="badge bg-success-subtle text-success fw-bold">Authentic</span>
+            </div>
+          </div>
+
+          <!-- Dish 4: Heba Cake -->
+          <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="400">
+            <div class="tilted-card" style="transform: translateY(1rem) scale(1.05) rotate(3deg);">
+              <div class="tilted-card-img" style="background: #fdf2f8; color: #db2777;">
+                🍰
+              </div>
+              <h4 class="fs-5 text-dark mb-1">Heba Cake</h4>
+              <p class="small text-muted mb-2">Airy sponge soaked in rich sweetened milk & whipped frosting</p>
+              <span class="badge bg-danger-subtle text-danger fw-bold">Signature</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Curve Transition to Stats -->
+      <div class="svg-layer svg-layer-bottom">
+        <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="width: 100%; height: 50px;">
+          <path d="M0,48L120,42.7C240,37,480,27,720,32C960,37,1200,59,1320,69.3L1440,80L1440,80L1320,80C1200,80,960,80,720,80C480,80,240,80,120,80L0,80Z" fill="#0074d9"></path>
+        </svg>
+      </div>
+    </section>
+
+    <!-- 5. CORE VALUES & STATS (Exact B.Laban Section Style) -->
+    <section id="about" class="stats-section">
+      <div class="container text-center">
+        <div class="col-lg-8 mx-auto mb-5" data-aos="fade-in">
+          <div class="brand-font fs-1 mb-2">Core Values</div>
+          <div style="width: 80px; height: 4px; background: #ffffff; margin: 15px auto 25px;"></div>
+          <p class="lead opacity-90 mb-4" style="line-height: 1.8;">
+            <strong>1. People:</strong> Welcoming guests with authentic Middle Eastern hospitality.<br>
+            <strong>2. Innovation:</strong> Redefining regional desserts with unmatched richness.<br>
+            <strong>3. Quality:</strong> Uncompromising freshness in every cup and dish.
+          </p>
+          <p class="small opacity-75">The Laban brings world-class dairy dessert standards to Kalaburagi.</p>
+        </div>
+
+        <!-- Metrics Row -->
+        <div class="row justify-content-center g-4">
+          <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="100">
+            <div class="stat-number">4.8 ★</div>
+            <div class="brand-font fs-5 text-white-50">Google Rating</div>
+          </div>
+          <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="200">
+            <div class="stat-number">23+</div>
+            <div class="brand-font fs-5 text-white-50">Verified Reviews</div>
+          </div>
+          <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="300">
+            <div class="stat-number">100%</div>
+            <div class="brand-font fs-5 text-white-50">Fresh Dairy</div>
+          </div>
+          <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="400">
+            <div class="stat-number">12 AM</div>
+            <div class="brand-font fs-5 text-white-50">Late Night Hours</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Curve Transition to Reviews -->
+      <div class="svg-layer svg-layer-bottom">
+        <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="width: 100%; height: 50px;">
+          <path d="M0,20L1440,60L1440,80L0,80Z" fill="#ffffff"></path>
+        </svg>
+      </div>
+    </section>
+
+    <!-- 6. GOOGLE REVIEWS SECTION -->
+    <section id="reviews" class="reviews-section">
+      <div class="container">
+        <div class="row align-items-center mb-5">
+          <div class="col-lg-6" data-aos="fade-right">
+            <span class="badge bg-primary-subtle text-primary brand-font px-3 py-2 rounded-pill mb-2">Customer Testimonials</span>
+            <h2 class="brand-font display-6 text-dark">Real Experiences from Real Guests</h2>
+            <p class="text-muted">Direct from our Google Maps listing in Basaveshwar Colony</p>
+          </div>
+          <div class="col-lg-6 text-lg-end" data-aos="fade-left">
+            <div class="d-inline-flex flex-wrap gap-2">
+              <span class="badge bg-light text-dark border px-3 py-2"><i class="fas fa-check text-primary me-1"></i> Dessert Quality (2)</span>
+              <span class="badge bg-light text-dark border px-3 py-2"><i class="fas fa-check text-primary me-1"></i> Rich Flavors (3)</span>
+              <span class="badge bg-light text-dark border px-3 py-2"><i class="fas fa-check text-primary me-1"></i> Polite Staff (4)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row g-4">
+          <!-- Review 1 -->
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="review-bubble">
+              <div>
+                <div class="text-warning mb-2">★★★★★</div>
+                <p class="text-secondary italic mb-4">
+                  "One of the best dessert places in town! The Laban Company offers amazing quality, rich flavors, and beautifully presented desserts. We tried the Ruh Hayati, Cheese Bomb, Salankatia, and Heba Cake, and every item was fresh and delicious!"
+                </p>
+              </div>
+              <div class="d-flex align-items-center gap-3 pt-3 border-top">
+                <div style="width: 42px; height: 42px; border-radius: 50%; background: var(--color1); color: white; display: flex; align-items: center; justify-content: center; font-weight: bold;">
+                  SS
+                </div>
+                <div>
+                  <h6 class="mb-0 fw-bold">SS Abhiyanta official</h6>
+                  <small class="text-muted">Local Guide • 1 review</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 2 -->
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="review-bubble">
+              <div>
+                <div class="text-warning mb-2">★★★★★</div>
+                <p class="text-secondary italic mb-4">
+                  "Restaurant The Laban exceeded my expectations! The ambience is premium, prices are reasonable, and the staff is very polite. Every dish was full of flavor, and the service was quick and professional."
+                </p>
+              </div>
+              <div class="d-flex align-items-center gap-3 pt-3 border-top">
+                <div style="width: 42px; height: 42px; border-radius: 50%; background: var(--color1_150); color: white; display: flex; align-items: center; justify-content: center; font-weight: bold;">
+                  MB
+                </div>
+                <div>
+                  <h6 class="mb-0 fw-bold">Mohammed Bilal shariff</h6>
+                  <small class="text-muted">Local Patron • 4 reviews</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 3 -->
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+            <div class="review-bubble">
+              <div>
+                <div class="text-warning mb-2">★★★★★</div>
+                <p class="text-secondary italic mb-4">
+                  "Very good quality food and authentic presentation. A refreshing late-night addition to Kalaburagi. From the moment I walked in, the hospitality made it a wonderful experience."
+                </p>
+              </div>
+              <div class="d-flex align-items-center gap-3 pt-3 border-top">
+                <div style="width: 42px; height: 42px; border-radius: 50%; background: #179bd7; color: white; display: flex; align-items: center; justify-content: center; font-weight: bold;">
+                  TL
+                </div>
+                <div>
+                  <h6 class="mb-0 fw-bold">Verified Diner</h6>
+                  <small class="text-muted">Google Maps Review</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 7. LOCATION & MAP CARD SECTION -->
+    <section id="location" style="background-color: #f8fbfe; padding: 90px 0;">
+      <div class="container">
+        <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
+          <div class="row g-0">
+            
+            <div class="col-lg-6 p-5 d-flex flex-col justify-content-between" style="background: #ffffff;">
+              <div>
+                <span class="badge bg-primary text-white brand-font px-3 py-2 rounded-pill mb-2">Visit Kalaburagi</span>
+                <h3 class="brand-font display-6 text-dark mb-4">Find The Laban</h3>
+
+                <div class="d-flex align-items-start gap-3 mb-4">
+                  <div class="text-primary fs-4 mt-1"><i class="fas fa-location-dot"></i></div>
+                  <div>
+                    <h6 class="fw-bold mb-1">Store Address</h6>
+                    <p class="text-muted small mb-0">8VQ2+45Q, Main Rd, Basaveshwar Colony, Mahatma Basaveswar colony, Kalaburagi, Karnataka 585105</p>
+                  </div>
+                </div>
+
+                <div class="d-flex align-items-start gap-3 mb-4">
+                  <div class="text-primary fs-4 mt-1"><i class="fas fa-clock"></i></div>
+                  <div>
+                    <h6 class="fw-bold mb-1">Operating Hours</h6>
+                    <p class="text-muted small mb-0">Open Daily • Closes 12:00 AM Midnight</p>
+                  </div>
+                </div>
+
+                <div class="d-flex align-items-start gap-3 mb-4">
+                  <div class="text-primary fs-4 mt-1"><i class="fas fa-hashtag"></i></div>
+                  <div>
+                    <h6 class="fw-bold mb-1">Plus Code</h6>
+                    <p class="text-muted small mb-0 font-monospace">8VQ2+45Q Kalaburagi</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="pt-3">
+                <a href="https://maps.google.com/?q=8VQ2+45Q,+Main+Rd,+Basaveshwar+Colony,+Kalaburagi,+Karnataka+585105" target="_blank" class="btn-blaban-primary w-100 justify-content-center">
+                  <i class="fas fa-diamond-turn-right me-2"></i> Open Navigation on Google Maps
+                </a>
+              </div>
+            </div>
+
+            <div class="col-lg-6 p-5 text-center d-flex align-items-center justify-content-center" style="background: linear-gradient(135deg, var(--color1_25), #ffffff);">
+              <div>
+                <div style="font-size: 80px; color: var(--color1);" class="mb-3">📍</div>
+                <h4 class="brand-font text-dark mb-2">Directions & Takeaway</h4>
+                <p class="text-muted small max-w-sm mx-auto mb-4">Located right along Main Road, Basaveshwar Colony for quick pickup and dessert service.</p>
+                <a href="https://maps.google.com/?q=8VQ2+45Q,+Main+Rd,+Basaveshwar+Colony,+Kalaburagi,+Karnataka+585105" target="_blank" class="btn btn-outline-primary rounded-pill px-4 brand-font">
+                  View Map & Nearby Places
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 8. FOOTER (Exact B.Laban Colors & Layout) -->
+  <footer class="blaban-footer">
+    <div class="container">
+      <div class="row g-4 mb-5">
+        <div class="col-lg-5">
+          <div class="brand-font fs-3 text-white mb-2">The Laban - د. لبن</div>
+          <p class="small text-white-50 max-w-sm">
+            Bringing authentic milk puddings, sweet baked creams, and viral dessert mastery to Kalaburagi.
+          </p>
+          <div class="d-flex gap-3 fs-5 mt-3 text-white-50">
+            <a href="#" class="text-white"><i class="fab fa-facebook-square"></i></a>
+            <a href="#" class="text-white"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="text-white"><i class="fab fa-tiktok"></i></a>
+            <a href="#" class="text-white"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+
+        <div class="col-6 col-lg-3">
+          <h6 class="brand-font text-white mb-3">Quick Navigation</h6>
+          <ul class="list-unstyled small space-y-2">
+            <li class="mb-2"><a href="#overview" class="footer-link">Home</a></li>
+            <li class="mb-2"><a href="#menu" class="footer-link">Dessert Specialties</a></li>
+            <li class="mb-2"><a href="#about" class="footer-link">Core Values</a></li>
+            <li class="mb-2"><a href="#reviews" class="footer-link">Customer Reviews</a></li>
+          </ul>
+        </div>
+
+        <div class="col-6 col-lg-4">
+          <h6 class="brand-font text-white mb-3">Shop Address</h6>
+          <p class="small text-white-50 mb-1">Main Rd, Basaveshwar Colony</p>
+          <p class="small text-white-50 mb-1">Kalaburagi, Karnataka 585105</p>
+          <p class="small text-white-50 font-monospace">Plus Code: 8VQ2+45Q</p>
+        </div>
+      </div>
+
+      <div class="pt-4 border-top border-white border-opacity-10 text-center small text-white-50">
+        Copyright © 2026 The Laban - د. لبن All rights reserved. Basaveshwar Colony, Kalaburagi.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    // Initialize AOS
+    AOS.init({
+      duration: 800,
+      once: true,
+      easing: 'ease-out'
+    });
+
+    // Dismiss B.Laban Loading Spinner
+    window.addEventListener('load', () => {
+      const loader = document.getElementById('websiteLoading');
+      if (loader) {
+        loader.style.opacity = '0';
+        setTimeout(() => loader.remove(), 500);
+      }
+    });
+  </script>
+</body>
+</html>
